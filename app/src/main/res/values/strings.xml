@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">LeHealth</string>
+    <string name="health_management">健康管理</string>
+    <string name="data_analysis">数据分析</string>
+    <string name="personal_center">个人中心</string>
+
 </resources>

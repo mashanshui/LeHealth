@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.View;
 import android.view.Window;
@@ -47,11 +48,13 @@ public abstract class XTitleActivity<P extends IPresent> extends RxAppCompatActi
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityCollector.addActivity(this);
+        context = this;
         if (getLayoutId() > 0) {
             setContentView(R.layout.base_title_activity);
             //将activity的layout放入content中
             View view = getLayoutInflater().inflate(getLayoutId(), null);
             titleBar = findViewById(R.id.title_bar);
+            titleBar.setBackgroundColor(Color.parseColor("#00b4ff"));
             mContent = (FrameLayout) findViewById(R.id.flt_context);
             mContent.addView(view);
             bindUI(null);
@@ -59,19 +62,30 @@ public abstract class XTitleActivity<P extends IPresent> extends RxAppCompatActi
         }
         initData(savedInstanceState);
         initTitle();
-        context = this;
     }
 
 
     protected abstract void initTitle();
 
     public void setTitle(String title) {
-       titleBar.setTitle(title);
-       titleBar.setTitleColor(Color.WHITE);
+        titleBar.setTitle(title);
+        titleBar.setTitleColor(Color.WHITE);
     }
 
-    public void setTitleBackgroundColor(String colorRGB){
+    public void setTitleBackgroundColor(String colorRGB) {
         titleBar.setBackgroundColor(Color.parseColor(colorRGB));
+    }
+
+    public void setBackAction() {
+        titleBar.setLeftImageResource(R.drawable.back_green);
+        titleBar.setLeftText("返回");
+        titleBar.setLeftTextColor(Color.WHITE);
+        titleBar.setLeftClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override
@@ -162,12 +176,5 @@ public abstract class XTitleActivity<P extends IPresent> extends RxAppCompatActi
 
     }
 
-    public static boolean hasKitKat() {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
-    }
-
-    public static boolean hasLollipop() {
-        return Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP;
-    }
 }
 

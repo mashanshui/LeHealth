@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_health_manager_24dp"
+        android:title="@string/health_management" />
+
+    <item
+        android:id="@+id/navigation_dashboard"
+        android:icon="@drawable/ic_data_analysis_24dp"
+        android:title="@string/data_analysis" />
+
+    <item
+        android:id="@+id/navigation_notifications"
+        android:icon="@drawable/ic_personal_center_24dp"
+        android:title="@string/personal_center" />
+</menu>

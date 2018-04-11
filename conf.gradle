@@ -9,6 +9,7 @@ ext {
             versionCode      : 1,
             versionName      : '1.0.0',
 
+            qmui             : "1.1.0",
             VSupportSdk      : '26.1.0',
             VRetrofitSdk     : "2.2.0",
             VOkhttp          : "3.4.2",
@@ -41,6 +42,9 @@ ext {
             "rxlifecycle-android"        : "com.trello.rxlifecycle2:rxlifecycle-android:${android["VRxlifecycle"]}",
             "rxlifecycle-components"     : "com.trello.rxlifecycle2:rxlifecycle-components:${android["VRxlifecycle"]}",
             "rxpermissions"              : "com.tbruyelle.rxpermissions2:rxpermissions:0.9.3@aar",
+            "circleimageview"            : "de.hdodenhof:circleimageview:2.1.0",
+            "qmui"                       : "com.qmuiteam:qmui:${android["qmui"]}",
+
 
             "canary-debug"               : "com.squareup.leakcanary:leakcanary-android:1.4-beta2",
             "canary-release"             : "com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2",

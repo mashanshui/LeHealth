@@ -27,4 +27,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation project(':mvp')
     compile 'com.qmuiteam:qmui:1.1.0'
+    compile 'com.github.lecho:hellocharts-library:1.5.8@aar'
+    compile rootProject.ext.dependencies["rxandroid"]
+    compile rootProject.ext.dependencies["rxjava"]
+    compile rootProject.ext.dependencies["butterknife"]
+    annotationProcessor rootProject.ext.dependencies["butterknife-apt"]
+    compile rootProject.ext.dependencies["circleimageview"]
 }

@@ -12,9 +12,13 @@ import cn.droidlover.xdroidmvp.mvp.IView;
 public interface LoginView extends IView<LoginPresent> {
     String getPassword();
 
-    String getUserName();
+    String getUsername();
 
     void toMainActivity(String userName, String password);
 
     void showFailedError();
+
+    void showLoadingDialog();
+
+    void dismissLoadingDialog();
 }
