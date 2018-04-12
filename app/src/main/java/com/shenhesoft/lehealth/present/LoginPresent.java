@@ -1,15 +1,13 @@
 package com.shenhesoft.lehealth.present;
 
 import com.shenhesoft.lehealth.data.LoginDataSource;
-import com.shenhesoft.lehealth.ui.LoginActivity;
+import com.shenhesoft.lehealth.ui.activity.LoginActivity;
 
 import java.util.concurrent.TimeUnit;
 
 import cn.droidlover.xdroidmvp.mvp.XPresent;
 import io.reactivex.Observable;
-import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 
 /**

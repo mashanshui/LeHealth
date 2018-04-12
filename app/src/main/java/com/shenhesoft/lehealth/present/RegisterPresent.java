@@ -1,7 +1,7 @@
 package com.shenhesoft.lehealth.present;
 
 import com.shenhesoft.lehealth.data.RegisterDataSource;
-import com.shenhesoft.lehealth.ui.RegisterActivity;
+import com.shenhesoft.lehealth.ui.activity.RegisterActivity;
 
 import cn.droidlover.xdroidmvp.mvp.XPresent;
 

@@ -83,7 +83,7 @@ public abstract class XTitleActivity<P extends IPresent> extends RxAppCompatActi
         titleBar.setLeftClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                onBackPressed();
             }
         });
     }

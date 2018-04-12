@@ -1,4 +1,4 @@
-package com.shenhesoft.lehealth.ui;
+package com.shenhesoft.lehealth.ui.activity;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

@@ -1,18 +1,14 @@
 package com.shenhesoft.lehealth.ui.fragment;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.shenhesoft.lehealth.R;
-import com.shenhesoft.lehealth.ui.ConditionActivity;
+import com.shenhesoft.lehealth.ui.activity.ConditionActivity;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 import cn.droidlover.xdroidmvp.mvp.XFragment;
 import cn.droidlover.xdroidmvp.router.Router;
 

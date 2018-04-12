@@ -1,8 +1,8 @@
-package com.shenhesoft.lehealth.ui.fragment;
+package com.shenhesoft.lehealth.ui.fragment.personal;
 
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import android.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,39 +12,33 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.shenhesoft.lehealth.R;
 import com.shenhesoft.lehealth.adapter.MessageAdapter;
 import com.shenhesoft.lehealth.adapter.bean.MessageItem;
-import com.shenhesoft.lehealth.ui.activity.personal.PersonalAboutActivity;
-import com.shenhesoft.lehealth.ui.activity.personal.PersonalHealthActivity;
-import com.shenhesoft.lehealth.ui.activity.personal.PersonalHelpActivity;
-import com.shenhesoft.lehealth.ui.activity.personal.PersonalSetActivity;
+import com.shenhesoft.lehealth.util.event.HealthDataEvent;
+import com.shenhesoft.lehealth.util.event.MedicalReportsEvent;
 
 import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
+import cn.droidlover.xdroidmvp.event.BusProvider;
 import cn.droidlover.xdroidmvp.mvp.XFragment;
-import cn.droidlover.xdroidmvp.router.Router;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class PersonalFragment extends XFragment {
-
+public class PersonalHealthFragment extends XFragment {
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     private MessageAdapter adapter;
 
     private List<MessageItem> messageList = Arrays.asList(
-            new MessageItem(R.drawable.ic_portrait_black_24dp, "健康档案"),
-            new MessageItem(R.drawable.ic_comment_black_24dp, "帮助反馈"),
-            new MessageItem(R.drawable.ic_error_outline_black_24dp, "关于我们"),
-            new MessageItem(R.drawable.ic_settings_black_24dp, "系统设置")
+            new MessageItem(R.drawable.ic_portrait_black_24dp, "健康数据"),
+            new MessageItem(R.drawable.ic_comment_black_24dp, "体检报告")
     );
 
-    public PersonalFragment() {
+    public PersonalHealthFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public void initData(Bundle savedInstanceState) {
@@ -57,17 +51,11 @@ public class PersonalFragment extends XFragment {
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 String message = messageList.get(position).getMessage();
                 switch (message) {
-                    case "健康档案":
-                        Router.newIntent(context).to(PersonalHealthActivity.class).launch();
+                    case "健康数据":
+                        BusProvider.getBus().post(new HealthDataEvent());
                         break;
-                    case "帮助反馈":
-                        Router.newIntent(context).to(PersonalHelpActivity.class).launch();
-                        break;
-                    case "关于我们":
-                        Router.newIntent(context).to(PersonalAboutActivity.class).launch();
-                        break;
-                    case "系统设置":
-                        Router.newIntent(context).to(PersonalSetActivity.class).launch();
+                    case "体检报告":
+                        BusProvider.getBus().post(new MedicalReportsEvent());
                         break;
                     default:
                         break;
@@ -78,12 +66,11 @@ public class PersonalFragment extends XFragment {
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_personal;
+        return R.layout.fragment_personal_health;
     }
 
     @Override
     public Object newP() {
         return null;
     }
-
 }

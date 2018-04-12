@@ -1,4 +1,4 @@
-package com.shenhesoft.lehealth.ui;
+package com.shenhesoft.lehealth.ui.activity;
 
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +11,6 @@ import com.shenhesoft.lehealth.present.RegisterPresent;
 import com.shenhesoft.lehealth.view.RegisterView;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import cn.droidlover.xdroidmvp.mvp.XTitleActivity;
 import cn.droidlover.xdroidmvp.router.Router;
 

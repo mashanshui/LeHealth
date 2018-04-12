@@ -1,4 +1,4 @@
-package com.shenhesoft.lehealth.ui;
+package com.shenhesoft.lehealth.ui.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -46,7 +46,13 @@ public class ConditionActivity extends XTitleActivity implements View.OnClickLis
 
     @Override
     protected void initTitle() {
-        setTitle("血压");
+        if (type == 0) {
+            setTitle("血压");
+        } else if (type == 1) {
+            setTitle("体温");
+        } else if (type == 2) {
+            setTitle("脉搏");
+        }
         setBackAction();
     }
 
