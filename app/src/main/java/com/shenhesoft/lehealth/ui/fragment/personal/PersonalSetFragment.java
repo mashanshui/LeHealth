@@ -15,6 +15,7 @@ import com.shenhesoft.lehealth.R;
 import com.shenhesoft.lehealth.adapter.MessageAdapter;
 import com.shenhesoft.lehealth.adapter.bean.MessageItem;
 import com.shenhesoft.lehealth.util.event.ModifyMessageEvent;
+import com.shenhesoft.lehealth.util.event.ModifyPasswordEvent;
 
 import java.util.Arrays;
 import java.util.List;
@@ -60,7 +61,7 @@ public class PersonalSetFragment extends XFragment {
                         BusProvider.getBus().post(new ModifyMessageEvent());
                         break;
                     case "密码修改":
-
+                        BusProvider.getBus().post(new ModifyPasswordEvent());
                         break;
                     default:
                         break;

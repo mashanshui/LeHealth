@@ -1,21 +1,27 @@
 package com.shenhesoft.lehealth.ui.fragment.personal;
 
 
-import android.os.Bundle;
 import android.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.os.Bundle;
+import android.widget.EditText;
 
 import com.shenhesoft.lehealth.R;
+import com.shenhesoft.lehealth.present.ModifyPersonalPswPresent;
+import com.shenhesoft.lehealth.view.ModifyPersonalPswView;
 
+import butterknife.BindView;
+import butterknife.OnClick;
 import cn.droidlover.xdroidmvp.mvp.XFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ModifyPasswordFragment extends XFragment {
+public class ModifyPasswordFragment extends XFragment<ModifyPersonalPswPresent> implements ModifyPersonalPswView{
 
+    @BindView(R.id.et_pw)
+    EditText etPw;
+    @BindView(R.id.et_new_pw)
+    EditText etNewPw;
 
     public ModifyPasswordFragment() {
         // Required empty public constructor
@@ -33,7 +39,27 @@ public class ModifyPasswordFragment extends XFragment {
     }
 
     @Override
-    public Object newP() {
-        return null;
+    public ModifyPersonalPswPresent newP() {
+        return new ModifyPersonalPswPresent();
+    }
+
+    @OnClick(R.id.btn_confirm)
+    public void onViewClicked() {
+        getP().modifyPassword();
+    }
+
+    @Override
+    public String getOldPsw() {
+        return etPw.getText().toString().trim();
+    }
+
+    @Override
+    public String getNewPsw() {
+        return etNewPw.getText().toString().trim();
+    }
+
+    @Override
+    public void closePage() {
+        getFragmentManager().popBackStack();
     }
 }
