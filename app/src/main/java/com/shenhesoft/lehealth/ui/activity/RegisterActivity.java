@@ -68,6 +68,7 @@ public class RegisterActivity extends XTitleActivity<RegisterPresent> implements
                 .setIconType(QMUITipDialog.Builder.ICON_TYPE_FAIL)
                 .setTipWord("注册失败")
                 .create();
+        tipDialog.show();
     }
 
     @Override
@@ -76,6 +77,7 @@ public class RegisterActivity extends XTitleActivity<RegisterPresent> implements
                 .setIconType(QMUITipDialog.Builder.ICON_TYPE_LOADING)
                 .setTipWord("正在加载")
                 .create();
+        tipDialog.show();
     }
 
     @Override
@@ -86,6 +88,7 @@ public class RegisterActivity extends XTitleActivity<RegisterPresent> implements
     @Override
     public void toLoginActivity() {
         Router.newIntent(context).to(LoginActivity.class).launch();
+        finish();
     }
 
     @Override

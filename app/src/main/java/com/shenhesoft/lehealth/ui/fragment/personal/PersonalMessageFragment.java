@@ -43,7 +43,7 @@ public class PersonalMessageFragment extends XFragment<ModifyPersonalMsgPresent>
 
     @Override
     public void initData(Bundle savedInstanceState) {
-
+        getP().initData();
     }
 
     @Override

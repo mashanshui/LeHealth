@@ -8,7 +8,7 @@
     tools:context=".ui.fragment.DataFragment">
 
     <Button
-        android:id="@+id/btn_blood"
+        android:id="@+id/btn_import"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"

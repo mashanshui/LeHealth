@@ -2,6 +2,7 @@ package com.shenhesoft.lehealth.ui.fragment.personal;
 
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -83,6 +84,15 @@ public class PersonalSetFragment extends XFragment {
 
     @OnClick(R.id.btn_exit)
     public void onViewClicked() {
+        restartApplication();
+    }
 
+    /**
+     * 重启应用
+     */
+    private void restartApplication() {
+        final Intent intent = getActivity().getPackageManager().getLaunchIntentForPackage(getActivity().getPackageName());
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 }

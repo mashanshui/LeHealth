@@ -1,6 +1,7 @@
 package com.shenhesoft.lehealth.present;
 
 import com.shenhesoft.lehealth.data.LoginDataSource;
+import com.shenhesoft.lehealth.data.LoginLocalDataSource;
 import com.shenhesoft.lehealth.ui.activity.LoginActivity;
 
 import java.util.concurrent.TimeUnit;
@@ -18,11 +19,12 @@ import io.reactivex.functions.Consumer;
 public class LoginPresent extends XPresent<LoginActivity> {
     private LoginDataSource mLoginDataSource;
 
-//    public LoginPresent() {
-//        mLoginDataSource = new LoginNetDataSource();
-//    }
+    public LoginPresent() {
+        mLoginDataSource = new LoginLocalDataSource();
+    }
 
     public void login() {
+        getV().showLoadingDialog();
         mLoginDataSource.login(getV().getUsername(), getV().getPassword(), new LoginDataSource.LoginCallBack() {
             @Override
             public void onSuccess(String userName, String passWord) {
@@ -33,15 +35,15 @@ public class LoginPresent extends XPresent<LoginActivity> {
             @Override
             public void onError() {
                 getV().dismissLoadingDialog();
-                Observable.timer(1500, TimeUnit.MILLISECONDS)
+                getV().showFailedError();
+                Observable.timer(2000, TimeUnit.MILLISECONDS)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(new Consumer<Long>() {
                             @Override
                             public void accept(Long aLong) throws Exception {
-                                getV().dismissLoadingDialog();
+                                getV().dismissErrorDialog();
                             }
                         });
-                getV().showFailedError();
             }
         });
     }

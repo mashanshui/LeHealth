@@ -6,7 +6,10 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.shenhesoft.lehealth.R;
@@ -21,6 +24,9 @@ import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+import cn.droidlover.xdroidmvp.cache.SharedPref;
 import cn.droidlover.xdroidmvp.mvp.XFragment;
 import cn.droidlover.xdroidmvp.router.Router;
 
@@ -32,6 +38,8 @@ public class PersonalFragment extends XFragment {
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
+    @BindView(R.id.username)
+    TextView username;
     private MessageAdapter adapter;
 
     private List<MessageItem> messageList = Arrays.asList(
@@ -48,10 +56,12 @@ public class PersonalFragment extends XFragment {
 
     @Override
     public void initData(Bundle savedInstanceState) {
+        String userName = SharedPref.getInstance(context).getString("username","");
+        username.setText(userName);
         adapter = new MessageAdapter(R.layout.adapter_item_message, messageList);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.setAdapter(adapter);
-        recyclerView.addItemDecoration(new DividerItemDecoration(context,DividerItemDecoration.VERTICAL));
+        recyclerView.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL));
         adapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {

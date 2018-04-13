@@ -26,7 +26,8 @@ public class LoginActivity extends XTitleActivity<LoginPresent> implements Login
     @BindView(R.id.tv_register)
     TextView tvRegister;
 
-    QMUITipDialog tipDialog;
+    QMUITipDialog loadingDialog;
+    QMUITipDialog errorDialog;
 
     @Override
     public void initData(Bundle savedInstanceState) {
@@ -64,27 +65,35 @@ public class LoginActivity extends XTitleActivity<LoginPresent> implements Login
     @Override
     public void toMainActivity(String userName, String password) {
         Router.newIntent(context).to(MainActivity.class).launch();
+        finish();
     }
 
     @Override
     public void showFailedError() {
-        tipDialog = new QMUITipDialog.Builder(context)
+        errorDialog = new QMUITipDialog.Builder(context)
                 .setIconType(QMUITipDialog.Builder.ICON_TYPE_FAIL)
                 .setTipWord("密码错误")
                 .create();
+        errorDialog.show();
     }
 
     @Override
     public void showLoadingDialog() {
-        tipDialog = new QMUITipDialog.Builder(context)
+        loadingDialog = new QMUITipDialog.Builder(context)
                 .setIconType(QMUITipDialog.Builder.ICON_TYPE_LOADING)
                 .setTipWord("正在加载")
                 .create();
+        loadingDialog.show();
     }
 
     @Override
     public void dismissLoadingDialog() {
-        tipDialog.cancel();
+        loadingDialog.cancel();
+    }
+
+    @Override
+    public void dismissErrorDialog() {
+        errorDialog.cancel();
     }
 
     @Override

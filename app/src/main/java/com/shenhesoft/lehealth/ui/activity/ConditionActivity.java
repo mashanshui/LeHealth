@@ -110,12 +110,31 @@ public class ConditionActivity extends XTitleActivity implements View.OnClickLis
     }
 
     private void checkIsNormal(String data) {
+        double num = Double.valueOf(data);
         if (type == 0) {
-            btnMessage.setText("您的血压正常");
+            if (num < 90) {
+                btnMessage.setText("您的血压偏低");
+            } else if (90 < num && num < 140) {
+                btnMessage.setText("您的血压正常");
+            } else {
+                btnMessage.setText("您的血压偏高");
+            }
         } else if (type == 1) {
-            btnMessage.setText("您的体温正常");
+            if (num < 36.3) {
+                btnMessage.setText("您的体温偏低");
+            } else if (36.3 < num && num < 37.2) {
+                btnMessage.setText("您的体温正常");
+            } else {
+                btnMessage.setText("您的体温偏高");
+            }
         } else if (type == 2) {
-            btnMessage.setText("您的脉搏正常");
+            if (num < 60) {
+                btnMessage.setText("您的脉搏很慢");
+            } else if (60 < num && num < 100) {
+                btnMessage.setText("您的脉搏正常");
+            } else {
+                btnMessage.setText("您的脉搏很快");
+            }
         }
     }
 
@@ -176,7 +195,6 @@ public class ConditionActivity extends XTitleActivity implements View.OnClickLis
         data.setAxisXBottom(axisX); //x 轴在底部
 //	    data.setAxisXTop(axisX);  //x 轴在顶部
         axisX.setHasLines(true); //x 轴分割线
-
 
         Axis axisY = new Axis();  //Y轴
         if (type == 0) {

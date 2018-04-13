@@ -21,4 +21,6 @@ public interface LoginView extends IView<LoginPresent> {
     void showLoadingDialog();
 
     void dismissLoadingDialog();
+
+    void dismissErrorDialog();
 }

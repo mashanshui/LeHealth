@@ -8,6 +8,7 @@ import com.qmuiteam.qmui.widget.dialog.QMUIDialogAction;
 import com.shenhesoft.lehealth.ui.fragment.personal.PersonalMessageFragment;
 
 import cn.droidlover.xdroidmvp.base.ActivityCollector;
+import cn.droidlover.xdroidmvp.cache.SharedPref;
 import cn.droidlover.xdroidmvp.kit.IToast;
 import cn.droidlover.xdroidmvp.mvp.XPresent;
 
@@ -18,20 +19,21 @@ import cn.droidlover.xdroidmvp.mvp.XPresent;
  */
 public class ModifyPersonalMsgPresent extends XPresent<PersonalMessageFragment> {
     private static final String TAG = "ModifyPersonalMsgPresen";
+
     public void modifyName() {
         showEditTextDialog("修改昵称", "在此输入您的昵称");
     }
 
     public void modifySex() {
-        showEditTextDialog("修改性别","在此输入您的性别");
+        showEditTextDialog("修改性别", "在此输入您的性别");
     }
 
     public void modifyHight() {
-        showEditTextDialog("修改身高","在此输入您的身高");
+        showEditTextDialog("修改身高", "在此输入您的身高");
     }
 
     public void modifyWeight() {
-        showEditTextDialog("修改体重","在此输入您的体重");
+        showEditTextDialog("修改体重", "在此输入您的体重");
     }
 
     private void showEditTextDialog(final String title, String placeholder) {
@@ -51,12 +53,16 @@ public class ModifyPersonalMsgPresent extends XPresent<PersonalMessageFragment> 
                         CharSequence text = builder.getEditText().getText();
                         if (text != null && text.length() > 0) {
                             if ("修改昵称".equals(title)) {
+                                SharedPref.getInstance(ActivityCollector.getTopActivity()).putString("name", text.toString());
                                 getV().updateName(text.toString());
                             } else if ("修改性别".equals(title)) {
+                                SharedPref.getInstance(ActivityCollector.getTopActivity()).putString("sex", text.toString());
                                 getV().updateSex(text.toString());
                             } else if ("修改身高".equals(title)) {
+                                SharedPref.getInstance(ActivityCollector.getTopActivity()).putString("hight", text.toString());
                                 getV().updatehight(text.toString());
                             } else if ("修改体重".equals(title)) {
+                                SharedPref.getInstance(ActivityCollector.getTopActivity()).putString("weight", text.toString());
                                 getV().updateWeight(text.toString());
                             }
                             dialog.dismiss();
@@ -66,5 +72,16 @@ public class ModifyPersonalMsgPresent extends XPresent<PersonalMessageFragment> 
                     }
                 })
                 .show();
+    }
+
+    public void initData() {
+        String name = SharedPref.getInstance(ActivityCollector.getTopActivity()).getString("name", "");
+        String sex = SharedPref.getInstance(ActivityCollector.getTopActivity()).getString("sex", "");
+        String hight = SharedPref.getInstance(ActivityCollector.getTopActivity()).getString("hight", "");
+        String weight = SharedPref.getInstance(ActivityCollector.getTopActivity()).getString("weight", "");
+        getV().updateName(name);
+        getV().updateSex(sex);
+        getV().updatehight(hight);
+        getV().updateWeight(weight);
     }
 }
