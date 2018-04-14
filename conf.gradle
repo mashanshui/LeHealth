@@ -48,6 +48,7 @@ ext {
             "qmui"                         : "com.qmuiteam:qmui:${android["qmui"]}",
             "guava"                        : "com.google.guava:guava:${android["guava"]}",
             "BaseRecyclerViewAdapterHelper": "com.github.CymChad:BaseRecyclerViewAdapterHelper:${android["BaseRecyclerViewAdapterHelper"]}",
+            "litepal"                      : "org.litepal.android:core:1.6.1",
 
 
             "canary-debug"                 : "com.squareup.leakcanary:leakcanary-android:1.4-beta2",

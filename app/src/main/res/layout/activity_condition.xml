@@ -49,7 +49,7 @@
         android:background="@drawable/bg_gray_corner"
         android:drawablePadding="10dp"
         android:hint="请输入您的血压"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:maxLines="1"
         android:padding="10dp"
         android:textColor="#000"

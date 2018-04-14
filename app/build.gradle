@@ -35,4 +35,5 @@ dependencies {
     compile rootProject.ext.dependencies["circleimageview"]
     compile rootProject.ext.dependencies["BaseRecyclerViewAdapterHelper"]
     compile rootProject.ext.dependencies["guava"]
+    compile rootProject.ext.dependencies["litepal"]
 }

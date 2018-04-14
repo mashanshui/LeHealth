@@ -179,7 +179,7 @@ public class DataAnalyzeActivity extends XTitleActivity {
         line.setCubic(false);//曲线是否平滑
 //	    line.setStrokeWidth(3);//线条的粗细，默认是3
         line.setFilled(false);//是否填充曲线的面积
-        line.setHasLabels(true);//曲线的数据坐标是否加上备注
+        line.setHasLabels(false);//曲线的数据坐标是否加上备注
 //		line.setHasLabelsOnlyForSelected(true);//点击数据坐标提示数据（设置了这个line.setHasLabels(true);就无效）
         line.setHasLines(true);//是否用直线显示。如果为false 则没有曲线只有点显示
         line.setHasPoints(true);//是否显示圆点 如果为false 则没有原点只有点显示
@@ -229,7 +229,7 @@ public class DataAnalyzeActivity extends XTitleActivity {
         line.setCubic(false);//曲线是否平滑
 //	    line.setStrokeWidth(3);//线条的粗细，默认是3
         line.setFilled(false);//是否填充曲线的面积
-        line.setHasLabels(true);//曲线的数据坐标是否加上备注
+        line.setHasLabels(false);//曲线的数据坐标是否加上备注
 //		line.setHasLabelsOnlyForSelected(true);//点击数据坐标提示数据（设置了这个line.setHasLabels(true);就无效）
         line.setHasLines(true);//是否用直线显示。如果为false 则没有曲线只有点显示
         line.setHasPoints(true);//是否显示圆点 如果为false 则没有原点只有点显示
@@ -280,7 +280,7 @@ public class DataAnalyzeActivity extends XTitleActivity {
         line.setCubic(false);//曲线是否平滑
 //	    line.setStrokeWidth(3);//线条的粗细，默认是3
         line.setFilled(false);//是否填充曲线的面积
-        line.setHasLabels(true);//曲线的数据坐标是否加上备注
+        line.setHasLabels(false);//曲线的数据坐标是否加上备注
 //		line.setHasLabelsOnlyForSelected(true);//点击数据坐标提示数据（设置了这个line.setHasLabels(true);就无效）
         line.setHasLines(true);//是否用直线显示。如果为false 则没有曲线只有点显示
         line.setHasPoints(true);//是否显示圆点 如果为false 则没有原点只有点显示

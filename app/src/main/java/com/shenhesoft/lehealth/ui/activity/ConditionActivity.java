@@ -3,12 +3,15 @@ package com.shenhesoft.lehealth.ui.activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.shenhesoft.lehealth.R;
+import com.shenhesoft.lehealth.present.ConditionPresent;
+import com.shenhesoft.lehealth.view.ConditionView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +28,8 @@ import lecho.lib.hellocharts.model.ValueShape;
 import lecho.lib.hellocharts.model.Viewport;
 import lecho.lib.hellocharts.view.LineChartView;
 
-public class ConditionActivity extends XTitleActivity implements View.OnClickListener {
-
+public class ConditionActivity extends XTitleActivity<ConditionPresent> implements View.OnClickListener,ConditionView {
+    private static final String TAG = "ConditionActivity";
     @BindView(R.id.chart)
     LineChartView lineChart;
     @BindView(R.id.btn_message)
@@ -42,7 +45,7 @@ public class ConditionActivity extends XTitleActivity implements View.OnClickLis
     private List<PointValue> mPointValues = new ArrayList<PointValue>();
     private List<AxisValue> mAxisXValues = new ArrayList<AxisValue>();
     //    List<String> date = new ArrayList<>();//X轴的标注
-    List<Integer> score = new ArrayList<>();//图表的数据点
+    List<Float> score = new ArrayList<>();//图表的数据点
 
     @Override
     protected void initTitle() {
@@ -61,7 +64,7 @@ public class ConditionActivity extends XTitleActivity implements View.OnClickLis
         type = getIntent().getIntExtra("type", 0);
         setMeasureType();
         btnAddData.setOnClickListener(this);
-        score.add(0);
+        score.add(0f);
         addAxisXLables();//获取x轴的标注
         addAxisPoints();//获取坐标点
         initLineChart();//初始化
@@ -69,10 +72,13 @@ public class ConditionActivity extends XTitleActivity implements View.OnClickLis
 
     private void setMeasureType() {
         if (type == 0) {
+            etBoold.setHint("请输入您的血压");
             tvMeasure.setText("mmHg");
         } else if (type == 1) {
+            etBoold.setHint("请输入您的体温");
             tvMeasure.setText("℃");
         } else if (type == 2) {
+            etBoold.setHint("请输入您的脉搏");
             tvMeasure.setText("次/分");
         }
     }
@@ -83,8 +89,8 @@ public class ConditionActivity extends XTitleActivity implements View.OnClickLis
     }
 
     @Override
-    public Object newP() {
-        return null;
+    public ConditionPresent newP() {
+        return new ConditionPresent();
     }
 
     @Override
@@ -103,14 +109,15 @@ public class ConditionActivity extends XTitleActivity implements View.OnClickLis
             return;
         }
         checkIsNormal(data);
-        score.add(Integer.valueOf(data));
+        score.add(Float.valueOf(data));
         addAxisPoints();
         addAxisXLables();
         initLineChart();
     }
 
-    private void checkIsNormal(String data) {
-        double num = Double.valueOf(data);
+
+    protected void checkIsNormal(String data) {
+        float num = Float.valueOf(data);
         if (type == 0) {
             if (num < 90) {
                 btnMessage.setText("您的血压偏低");
@@ -141,7 +148,7 @@ public class ConditionActivity extends XTitleActivity implements View.OnClickLis
     /**
      * X 轴的显示
      */
-    private void addAxisXLables() {
+    protected void addAxisXLables() {
         if (!mAxisXValues.isEmpty()) {
             mAxisXValues.clear();
         }
@@ -153,11 +160,12 @@ public class ConditionActivity extends XTitleActivity implements View.OnClickLis
     /**
      * 图表的每个点的显示
      */
-    private void addAxisPoints() {
+    protected void addAxisPoints() {
         if (!mPointValues.isEmpty()) {
             mPointValues.clear();
         }
         for (int i = 0; i < score.size(); i++) {
+            Log.e(TAG, "addAxisPoints: "+score.get(i) );
             mPointValues.add(new PointValue(i, score.get(i)));
         }
     }
@@ -166,14 +174,14 @@ public class ConditionActivity extends XTitleActivity implements View.OnClickLis
     /**
      * 初始化LineChart的一些设置
      */
-    private void initLineChart() {
+    protected void initLineChart() {
         Line line = new Line(mPointValues).setColor(Color.parseColor("#FFCD41"));  //折线的颜色
         List<Line> lines = new ArrayList<Line>();
         line.setShape(ValueShape.CIRCLE);//折线图上每个数据点的形状  这里是圆形 （有三种 ：ValueShape.SQUARE  ValueShape.CIRCLE  ValueShape.SQUARE）
         line.setCubic(false);//曲线是否平滑
 //	    line.setStrokeWidth(3);//线条的粗细，默认是3
         line.setFilled(false);//是否填充曲线的面积
-        line.setHasLabels(true);//曲线的数据坐标是否加上备注
+        line.setHasLabels(false);//曲线的数据坐标是否加上备注
 //		line.setHasLabelsOnlyForSelected(true);//点击数据坐标提示数据（设置了这个line.setHasLabels(true);就无效）
         line.setHasLines(true);//是否用直线显示。如果为false 则没有曲线只有点显示
         line.setHasPoints(true);//是否显示圆点 如果为false 则没有原点只有点显示

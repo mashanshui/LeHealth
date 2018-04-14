@@ -1,11 +1,16 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="QMUI.Compat.NoActionBar">
-        <!-- Customize your theme here. -->
+    <!--<style name="AppTheme" parent="QMUI.Compat.NoActionBar">-->
+        <!--&lt;!&ndash; Customize your theme here. &ndash;&gt;-->
+        <!--&lt;!&ndash;<item name="colorPrimary">#00b4ff</item>&ndash;&gt;-->
+        <!--&lt;!&ndash;<item name="colorPrimaryDark">#00b4ff</item>&ndash;&gt;-->
+        <!--&lt;!&ndash;<item name="colorAccent">@color/colorAccent</item>&ndash;&gt;-->
+    <!--</style>-->
+    <style name="QMUI.Compat.NoActionBar.AppTheme">
+         Customize your theme here.
         <item name="colorPrimary">#00b4ff</item>
         <item name="colorPrimaryDark">#00b4ff</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
 </resources>

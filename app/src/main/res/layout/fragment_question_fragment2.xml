@@ -27,7 +27,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:text="      打开乐健康APP，在弹出的登录页上输入账号和密码，再点击登录即可。或者点击屏幕下方QQ，选择第三方QQ授权登录。"
+        android:text="      打开乐健康APP，在弹出的登录页上输入账号和密码，再点击登录即可。"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

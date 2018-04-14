@@ -1,6 +1,8 @@
 package com.shenhesoft.lehealth.ui.activity.personal;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.util.Log;
 import android.widget.FrameLayout;
 
 import com.shenhesoft.lehealth.R;
@@ -18,7 +20,7 @@ import cn.droidlover.xdroidmvp.mvp.XTitleActivity;
 import io.reactivex.functions.Consumer;
 
 public class PersonalHealthActivity extends XTitleActivity {
-
+    private static final String TAG = "PersonalHealthActivity";
 
     @BindView(R.id.frameLayout)
     FrameLayout frameLayout;
@@ -31,8 +33,10 @@ public class PersonalHealthActivity extends XTitleActivity {
 
     @Override
     public void initData(Bundle savedInstanceState) {
-        ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), new PersonalHealthFragment(), R.id.frameLayout);
+        PersonalHealthFragment personalHealthFragment = new PersonalHealthFragment();
+        ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), personalHealthFragment, R.id.frameLayout);
     }
+
 
     @Override
     public boolean useEventBus() {
@@ -48,6 +52,7 @@ public class PersonalHealthActivity extends XTitleActivity {
     public Object newP() {
         return null;
     }
+
 
     @Override
     public void bindEvent() {
