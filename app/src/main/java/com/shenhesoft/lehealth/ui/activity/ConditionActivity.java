@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.shenhesoft.lehealth.R;
+import com.shenhesoft.lehealth.data.db.Blood;
 import com.shenhesoft.lehealth.present.ConditionPresent;
 import com.shenhesoft.lehealth.view.ConditionView;
 
@@ -68,6 +69,13 @@ public class ConditionActivity extends XTitleActivity<ConditionPresent> implemen
         addAxisXLables();//获取x轴的标注
         addAxisPoints();//获取坐标点
         initLineChart();//初始化
+        if (type == 0) {
+            getP().initBloodData();
+        } else if (type == 1) {
+            getP().initHeatData();
+        } else if (type == 2) {
+            getP().initPluesData();
+        }
     }
 
     private void setMeasureType() {
@@ -97,19 +105,39 @@ public class ConditionActivity extends XTitleActivity<ConditionPresent> implemen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_add_data:
-                addData(etBoold.getText().toString().trim());
+                if (type == 0) {
+                    getP().addBloodData(etBoold.getText().toString().trim());
+                }else if (type == 1) {
+                    getP().addHeatData(etBoold.getText().toString().trim());
+                } else if (type == 2) {
+                    getP().addPluesData(etBoold.getText().toString().trim());
+                }
                 break;
             default:
                 break;
         }
     }
 
-    private void addData(String data) {
+    @Override
+    public void addData(String data) {
         if (TextUtils.isEmpty(data)) {
             return;
         }
         checkIsNormal(data);
         score.add(Float.valueOf(data));
+        addAxisPoints();
+        addAxisXLables();
+        initLineChart();
+    }
+
+    @Override
+    public void addDatas(List<String> datas) {
+        if (datas.isEmpty()) {
+            return;
+        }
+        for (int i = 0; i < datas.size(); i++) {
+            score.add(Float.valueOf(datas.get(i)));
+        }
         addAxisPoints();
         addAxisXLables();
         initLineChart();

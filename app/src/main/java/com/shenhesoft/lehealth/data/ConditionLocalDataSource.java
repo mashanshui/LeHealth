@@ -4,6 +4,8 @@ import com.shenhesoft.lehealth.data.db.Blood;
 import com.shenhesoft.lehealth.data.db.Heat;
 import com.shenhesoft.lehealth.data.db.Plues;
 
+import org.litepal.crud.DataSupport;
+
 import java.util.List;
 
 /**
@@ -15,32 +17,38 @@ public class ConditionLocalDataSource implements ConditionDataSource {
 
     @Override
     public List<Blood> getAllBlood() {
-        return null;
+        return DataSupport.findAll(Blood.class);
     }
 
     @Override
     public List<Heat> getAllHeat() {
-        return null;
+        return DataSupport.findAll(Heat.class);
     }
 
     @Override
     public List<Plues> getAllPlues() {
-        return null;
+        return DataSupport.findAll(Plues.class);
     }
 
     @Override
-    public void saveBlood(Blood blood) {
-        Blood blood1 = blood;
-        blood1.save();
+    public void saveBlood(String data) {
+        Blood blood = new Blood();
+        blood.setBlood(data);
+        blood.save();
     }
 
     @Override
-    public void saveHeat(Heat heat) {
-
+    public void saveHeat(String heat) {
+        Heat heat1 = new Heat();
+        heat1.setHeat(heat);
+        heat1.save();
     }
 
     @Override
-    public void savePlues(Plues plues) {
-
+    public void savePlues(String plues) {
+        Plues plues1 = new Plues();
+        plues1.setPlues(plues);
+        plues1.save();
     }
+
 }

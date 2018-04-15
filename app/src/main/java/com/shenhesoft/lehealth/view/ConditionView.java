@@ -1,6 +1,9 @@
 package com.shenhesoft.lehealth.view;
 
+import com.shenhesoft.lehealth.data.db.Blood;
 import com.shenhesoft.lehealth.present.ConditionPresent;
+
+import java.util.List;
 
 import cn.droidlover.xdroidmvp.mvp.IView;
 
@@ -11,4 +14,7 @@ import cn.droidlover.xdroidmvp.mvp.IView;
  */
 public interface ConditionView extends IView<ConditionPresent> {
 
+    void addData(String data);
+
+    void addDatas(List<String> datas);
 }

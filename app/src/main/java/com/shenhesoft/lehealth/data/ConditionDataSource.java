@@ -26,9 +26,9 @@ public interface ConditionDataSource {
 
     List<Plues> getAllPlues();
 
-    void saveBlood(Blood blood);
+    void saveBlood(String blood);
 
-    void saveHeat(Heat heat);
+    void saveHeat(String heat);
 
-    void savePlues(Plues plues);
+    void savePlues(String plues);
 }
