@@ -10,13 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/QMUI.Compat.NoActionBar.AppTheme">
-        <activity android:name=".ui.activity.MainActivity"></activity>
+        <activity android:name=".ui.activity.MainActivity" />
         <activity android:name=".ui.activity.LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ui.activity.RegisterActivity" />
         <activity android:name=".ui.activity.ConditionActivity" />
@@ -24,7 +19,14 @@
         <activity android:name=".ui.activity.personal.PersonalHelpActivity" />
         <activity android:name=".ui.activity.personal.PersonalAboutActivity" />
         <activity android:name=".ui.activity.personal.PersonalSetActivity" />
-        <activity android:name=".ui.activity.DataAnalyzeActivity"></activity>
+        <activity android:name=".ui.activity.DataAnalyzeActivity" />
+        <activity android:name=".ui.activity.AnswerActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
